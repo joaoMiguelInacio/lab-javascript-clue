@@ -20,7 +20,7 @@ const suspectsArray = [
     description: "PhD in plant toxicology. Adopted daughter of Mr. Boddy",
     image: "http://www.radiotimes.com/uploads/images/Original/111967.jpg",
     color: "white"
-  }
+  },
   {
     firstName: "Victor",
     lastName: "Plum",
@@ -153,28 +153,22 @@ const weaponsArray = [
 // ITERATION 2
 
 function selectRandom(arr){
-  if (arr === weaponsArray){
-    let randomWeapon = weaponsArray[Math.floor(Math.random()*weaponsArray.length)]
-    return randomWeapon
-  } else if (arr === roomsArray) {
-    let randomRoom = roomsArray[Math.floor(Math.random()*roomsArray.length)]
-    return randomRoom
-  } else if (arr === suspectsArray) {
-    let randomSuspect = suspectsArray[Math.floor(Math.random()*suspectsArray.length)]
-    return randomSuspect
+  if (arr.lenght === 0){
+    return undefined
+  } else{
+    let randomCard = arr[Math.floor(Math.random()*arr.length)]
+    return randomCard
+  }
 }
-
 
 function pickMystery() {
   return {suspect:selectRandom(suspectsArray), weapon:selectRandom(weaponsArray), room:selectRandom(roomsArray)}
 }
-  
-let mistery = pickMystery()
 
 // ITERATION 3
 
-function revealMystery() {
-  return `${mistery.suspect.firstName} ${mistery.suspect.lastName} killed Mr. Boddy using the ${mistery.weapon.name} in the ${mistery.weapon.name}!`
+function revealMystery(mistery) {
+  return `${mistery.suspect.firstName} ${mistery.suspect.lastName} killed Mr. Boddy using the ${mistery.weapon.name} in the ${mistery.room.name}!`
 }
 
 // The following is required to make unit tests work.
